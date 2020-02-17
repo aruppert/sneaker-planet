@@ -3,6 +3,7 @@ import GlobalStyles from "./GlobalStyles";
 import { ThemeProvider } from "emotion-theming";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { primary } from "./themes/themes";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
@@ -11,9 +12,9 @@ function App() {
         <Router>
           <GlobalStyles />
           <Switch>
+            <Route exact path="/" component={LandingPage} />
             <Route path="/home">
-              <img src="./logo192.png" alt="Sneaker Planet Shop Logo" />
-              <p>Sneaker Planet Shop Prototype with Bootstrap</p>
+              <p>HOME - Shop under construction</p>
             </Route>
           </Switch>
         </Router>
