@@ -11,12 +11,15 @@ const H1 = styled.h1`
 const NavbarBrand = styled(Navbar.Brand)`
   display: flex;
 `;
+const Logo = styled.img`
+  border-radius: 50%;
+`;
 
 export default function Header() {
   return (
-    <Navbar bg="dark" variant="dark" expand="md">
-      <NavbarBrand href="/">
-        <img src="../logo192.png" width="40" height="40" alt="shop-logo" />
+    <Navbar sticky="top" bg="dark" variant="dark" expand="md">
+      <NavbarBrand href="/shop">
+        <Logo src="../logo192.png" width="40" height="40" alt="shop-logo" />
         <H1>Sneaker Planet</H1>
       </NavbarBrand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
