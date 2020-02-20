@@ -14,7 +14,7 @@ const SocialMedia = styled.div`
 
 export default function Footer() {
   return (
-    <Navbar bg="dark" sticky="bottom">
+    <Navbar bg="dark" fixed="bottom">
       <aside>© by Sneaker Planet 2020</aside>
       <SocialMedia>
         <Github />
