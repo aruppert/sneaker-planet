@@ -17,7 +17,7 @@ const Logo = styled.img`
 
 export default function Header() {
   return (
-    <Navbar sticky="top" bg="dark" variant="dark" expand="md">
+    <Navbar fixed="top" bg="dark" variant="dark" expand="md">
       <NavbarBrand href="/shop">
         <Logo src="../logo192.png" width="40" height="40" alt="shop-logo" />
         <H1>Sneaker Planet</H1>
