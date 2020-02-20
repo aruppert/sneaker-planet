@@ -1,10 +1,27 @@
 import React from "react";
 import styled from "@emotion/styled";
-// import { Card, CardProps, Button } from "react-bootstrap";
+import ProductCard from "../components/ProductCard";
 
 const ShopContainer = styled.div`
-  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 1;
+  padding: 70px 0;
+  overflow: scroll;
+  margin: auto;
 `;
 export default function ShopPage() {
-  return <ShopContainer>Content coming soon.</ShopContainer>;
+  return (
+    <ShopContainer>
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+    </ShopContainer>
+  );
 }
