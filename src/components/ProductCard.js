@@ -1,26 +1,46 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { Card, Button } from "react-bootstrap";
-import sneaker1 from "../assets/sneaker1.png";
 
 const CardContainer = styled.div`
   margin: 10px;
+  min-height: 382px;
 `;
 
+const CardStyled = styled(Card)`
+  min-height: 382px;
+  width: 12rem;
+  display: flex;
+`;
+const CardBody = styled(Card.Body)`
+  display: flex;
+  flex-flow: column wrap;
+`;
 const CardNav = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
 `;
 
-export default function ProductCard() {
+const CardTitle = styled(Card.Title)`
+  font-size: 1rem;
+`;
+
+export default function ProductCard({
+  id,
+  name,
+  forGender,
+  description,
+  price,
+  src
+}) {
   return (
     <CardContainer>
-      <Card style={{ width: "10rem" }}>
-        <Card.Img variant="top" src={sneaker1} />
-        <Card.Body>
-          <Card.Title>asics Gel 5.0</Card.Title>
-          <Card.Text>Women's Running Shoes</Card.Text>
+      <CardStyled>
+        <Card.Img variant="top" src={src} alt={name} />
+        <CardBody>
+          <CardTitle>{name}</CardTitle>
+          <Card.Text style={{ flexGrow: 1 }}>{description}</Card.Text>
           <CardNav>
             <Button variant="outline-dark" size="sm">
               Details
@@ -29,8 +49,8 @@ export default function ProductCard() {
               Buy
             </Button>
           </CardNav>
-        </Card.Body>
-      </Card>
+        </CardBody>
+      </CardStyled>
     </CardContainer>
   );
 }

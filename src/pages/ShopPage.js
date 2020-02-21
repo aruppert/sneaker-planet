@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import ProductCard from "../components/ProductCard";
+import shoes from "../misc/Shoes";
 
 const ShopContainer = styled.div`
   display: flex;
@@ -10,18 +11,23 @@ const ShopContainer = styled.div`
   overflow: scroll;
   margin: auto;
 `;
+
 export default function ShopPage() {
+  console.log(shoes);
+  console.log(shoes[0].name);
+
   return (
     <ShopContainer>
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+      {shoes.map(shoe => (
+        <ProductCard
+          id={shoe.id}
+          name={shoe.name}
+          forGender={shoe.for}
+          description={shoe.description}
+          price={shoe.price}
+          src={shoe.img}
+        />
+      ))}
     </ShopContainer>
   );
 }
