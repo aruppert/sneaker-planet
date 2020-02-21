@@ -20,7 +20,7 @@ export default function ShopPage() {
     <ShopContainer>
       {shoes.map(shoe => (
         <ProductCard
-          id={shoe.id}
+          key={shoe.id}
           name={shoe.name}
           forGender={shoe.for}
           description={shoe.description}
