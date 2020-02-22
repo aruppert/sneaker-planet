@@ -2,7 +2,7 @@ const shoes = [
   {
     id: 0,
     name: "Converse Classic",
-    for: "both",
+    for: "unisex",
     description: "The all-time classic in original design.",
     price: "80",
     img: "pictures/sneaker1.webp"
@@ -42,7 +42,7 @@ const shoes = [
   {
     id: 5,
     name: "Nike High Skate",
-    for: "both",
+    for: "unisex",
     description: "Not only for skating the best shoe around.",
     price: "88",
     img: "pictures/sneaker6.webp"
@@ -50,7 +50,7 @@ const shoes = [
   {
     id: 6,
     name: "Nike Eco Rain",
-    for: "both",
+    for: "unisex",
     description: "100% waterproof for every climate zone.",
     price: "120",
     img: "pictures/sneaker7.webp"
@@ -66,7 +66,7 @@ const shoes = [
   {
     id: 8,
     name: "Purple Marathon .2",
-    for: "both",
+    for: "unisex",
     description: "Fly through any race with our new improved model.",
     price: "130",
     img: "pictures/sneaker9.webp"
