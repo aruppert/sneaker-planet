@@ -13,14 +13,11 @@ const ShopContainer = styled.div`
 `;
 
 export default function ShopPage() {
-  console.log(shoes);
-  console.log(shoes[0].name);
-
   return (
     <ShopContainer>
       {shoes.map(shoe => (
         <ProductCard
-          id={shoe.id}
+          key={shoe.id}
           name={shoe.name}
           forGender={shoe.for}
           description={shoe.description}
