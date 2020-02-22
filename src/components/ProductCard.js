@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { Card, Button, DropdownButton, Dropdown } from "react-bootstrap";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
+
 const CardContainer = styled.div`
   margin: 10px;
   min-height: 382px;
