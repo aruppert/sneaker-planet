@@ -15,35 +15,54 @@ const Logo = styled.img`
   border-radius: 50%;
 `;
 
-export default function Header({ onFilterChange, onActivateFilter }) {
+export default function Header() {
   function setFilter(gender) {
-    onActivateFilter(true);
-    onFilterChange(gender);
+    sessionStorage.setItem("genderFilter", gender);
   }
 
   return (
     <Navbar fixed="top" bg="dark" variant="dark" expand="md">
-      <NavbarBrand href="/shop">
+      <NavbarBrand href="/home">
         <Logo src="../logo192.png" width="40" height="40" alt="shop-logo" />
         <H1>Sneaker Planet</H1>
       </NavbarBrand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/shop">Shop</Nav.Link>
+          <Nav.Link href="/shop" onClick={() => setFilter("")}>
+            Shop
+          </Nav.Link>
           <NavDropdown title="Categories" id="basic-nav-dropdown">
-            <NavDropdown.Item onClick={() => setFilter("female")}>
+            <NavDropdown.Item
+              onClick={() => {
+                setFilter("female");
+                window.location.reload();
+              }}
+            >
               Women
             </NavDropdown.Item>
-            <NavDropdown.Item onClick={() => setFilter("male")}>
+            <NavDropdown.Item
+              onClick={() => {
+                setFilter("male");
+                window.location.reload();
+              }}
+            >
               Men
             </NavDropdown.Item>
-            <NavDropdown.Item href="/children">Children</NavDropdown.Item>
+            <NavDropdown.Item disabled href="/children">
+              Children
+            </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/customs">Customs</NavDropdown.Item>
+            <NavDropdown.Item disabled href="/customs">
+              Customs
+            </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href="/sale">SALE</Nav.Link>
-          <Nav.Link href="/about">About us</Nav.Link>
+          <Nav.Link disabled href="/sale">
+            SALE
+          </Nav.Link>
+          <Nav.Link disabled href="/about">
+            About us
+          </Nav.Link>
         </Nav>
         <Form inline>
           <FormControl

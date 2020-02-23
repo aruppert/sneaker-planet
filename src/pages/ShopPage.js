@@ -12,10 +12,13 @@ const ShopContainer = styled.div`
   margin: auto;
 `;
 
-export default function ShopPage({ genderFilter, filterOn }) {
+export default function ShopPage() {
   const filteredShoes = shoes.filter(shoe => {
-    if (filterOn) {
-      return shoe.for === genderFilter || shoe.for === "unisex";
+    if (sessionStorage.getItem("genderFilter") !== "") {
+      return (
+        shoe.for === sessionStorage.getItem("genderFilter") ||
+        shoe.for === "unisex"
+      );
     } else {
       return shoes;
     }
