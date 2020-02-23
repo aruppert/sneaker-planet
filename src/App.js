@@ -9,6 +9,9 @@ import ShopPage from "./pages/ShopPage";
 import Footer from "./components/Footer";
 
 function App() {
+  const [genderFilter, setGenderFilter] = React.useState("unisex");
+  const [filterOn, setFilterOn] = React.useState(false);
+
   return (
     <>
       <ThemeProvider theme={primary}>
@@ -17,10 +20,13 @@ function App() {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route>
-              <Header />
+              <Header
+                onFilterChange={gender => setGenderFilter(gender)}
+                onActivateFilter={bool => setFilterOn(bool)}
+              />
               <Switch>
                 <Route path="/shop">
-                  <ShopPage />
+                  <ShopPage genderFilter={genderFilter} filterOn={filterOn} />
                 </Route>
               </Switch>
               <Footer />
