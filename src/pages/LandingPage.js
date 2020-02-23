@@ -21,7 +21,7 @@ export default function LandingPage() {
   const history = useHistory();
 
   React.useEffect(() => {
-    const timeoutId = setTimeout(() => history.push("/shop"), 2700);
+    const timeoutId = setTimeout(() => history.push("/home"), 2700);
     return () => {
       clearTimeout(timeoutId);
     };
