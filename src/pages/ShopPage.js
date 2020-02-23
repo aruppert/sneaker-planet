@@ -12,13 +12,18 @@ const ShopContainer = styled.div`
   margin: auto;
 `;
 
-export default function ShopPage() {
-  console.log(shoes);
-  console.log(shoes[0].name);
+export default function ShopPage({ genderFilter, filterOn }) {
+  const filteredShoes = shoes.filter(shoe => {
+    if (filterOn) {
+      return shoe.for === genderFilter || shoe.for === "unisex";
+    } else {
+      return shoes;
+    }
+  });
 
   return (
     <ShopContainer>
-      {shoes.map(shoe => (
+      {filteredShoes.map(shoe => (
         <ProductCard
           key={shoe.id}
           name={shoe.name}
