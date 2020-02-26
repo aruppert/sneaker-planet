@@ -8,18 +8,26 @@ const HomeContainer = styled.div`
   flex-grow: 1;
   justify-content: center;
   padding: 70px 0;
-
   margin: auto;
 `;
 
-// const CardsWrapper = styled.div`
-// `
-
 const MenCardContainer = styled(Link)`
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.9;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+    border: 2px solid #353b40;
+  }
   border-radius: 5px;
   margin: 2vh 0;
   width: 85vw;
