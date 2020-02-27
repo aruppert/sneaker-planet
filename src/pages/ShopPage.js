@@ -19,7 +19,7 @@ const StyledCarousel = styled(Carousel)`
   height: 25vh;
 `;
 
-export default function ShopPage() {
+export default function ShopPage({ onCartChange }) {
   const filteredShoes = shoes.filter(shoe => {
     if (sessionStorage.getItem("genderFilter") !== "") {
       return (
@@ -30,6 +30,10 @@ export default function ShopPage() {
       return shoes;
     }
   });
+
+  function addItem(item) {
+    onCartChange(item);
+  }
 
   return (
     <ShopContainer>
@@ -60,6 +64,7 @@ export default function ShopPage() {
             description={shoe.description}
             price={shoe.price}
             src={shoe.img}
+            onAddItem={item => addItem(item)}
           />
         ))}
       </ProductContainer>

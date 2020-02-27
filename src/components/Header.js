@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Navbar, Nav, NavDropdown, Form, FormControl } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import Cart from "../icons/Cart";
 
 const H1 = styled.h1`
   font-size: 1.3rem;
@@ -15,7 +16,13 @@ const Logo = styled.img`
   border-radius: 50%;
 `;
 
-export default function Header() {
+const Button = styled.button`
+  background: none;
+  outline: none;
+  border: none;
+`;
+
+export default function Header({ toggleCart }) {
   function setFilter(gender) {
     sessionStorage.setItem("genderFilter", gender);
   }
@@ -64,14 +71,10 @@ export default function Header() {
             About us
           </Nav.Link>
         </Nav>
-        <Form inline>
-          <FormControl
-            type="text"
-            placeholder="Find Sneaker"
-            className="mr-sm-2"
-          />
-        </Form>
       </Navbar.Collapse>
+      <Button onClick={() => toggleCart()}>
+        <Cart />
+      </Button>
     </Navbar>
   );
 }
