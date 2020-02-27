@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import { Card, Button, DropdownButton, Dropdown } from "react-bootstrap";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 
-
 const CardContainer = styled.div`
   margin: 10px;
   min-height: 382px;
@@ -28,6 +27,19 @@ const CardTitle = styled(Card.Title)`
   font-size: 1rem;
 `;
 
+const FlippyStyled = styled(Flippy)`
+  padding: 0;
+`;
+
+const FrontSideStyled = styled(FrontSide)`
+  padding: 0;
+  box-shadow: none;
+`;
+const BackSideStyled = styled(BackSide)`
+  padding: 0;
+  box-shadow: none;
+`;
+
 export default function ProductCard({
   id,
   name,
@@ -37,8 +49,8 @@ export default function ProductCard({
   src
 }) {
   return (
-    <Flippy flipOnHover={true} flipDirection="horizontal">
-      <FrontSide>
+    <FlippyStyled flipOnHover={true} flipDirection="horizontal">
+      <FrontSideStyled>
         <CardContainer>
           <CardStyled>
             <Card.Img variant="top" src={src} alt={name} />
@@ -55,8 +67,8 @@ export default function ProductCard({
             </CardBody>
           </CardStyled>
         </CardContainer>
-      </FrontSide>
-      <BackSide>
+      </FrontSideStyled>
+      <BackSideStyled>
         <CardContainer>
           <CardStyled>
             <Card.Img variant="top" src={src} alt={name} />
@@ -121,7 +133,7 @@ export default function ProductCard({
             </CardBody>
           </CardStyled>
         </CardContainer>
-      </BackSide>
-    </Flippy>
+      </BackSideStyled>
+    </FlippyStyled>
   );
 }
