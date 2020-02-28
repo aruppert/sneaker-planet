@@ -26,7 +26,7 @@ export default function ShoppingCart({ contentCart }) {
         <Card.Body>
           <Card.Text>
             {contentCart.map(shoe => (
-              <ListGroup variant="flush">
+              <ListGroup key={shoe.name} variant="flush">
                 <ListGroup.Item>
                   {shoe.name} {shoe.price}€ Size:{shoe.selectedSize}
                 </ListGroup.Item>
