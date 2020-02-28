@@ -179,7 +179,7 @@ export default function ProductCard({
                     verifyAndAddItem({ name, price, selectedSize })
                   }
                 >
-                  Buy
+                  Add
                 </Button>
               </CardNav>
             </CardBody>

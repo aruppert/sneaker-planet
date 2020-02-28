@@ -1,29 +1,29 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Button } from "react-bootstrap";
 
 const Container = styled.div`
   position: absolute;
-  top: 70px;
+  top: 0;
   right: 0;
+  margin: 70px 0;
   z-index: 100;
 `;
 
+const Total = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export default function ShoppingCart({ contentCart }) {
-  //   function totalOfCart(contentCart, prop) {
-  //     if (contentCart === null) {
-  //       return 0;
-  //     }
-  //     return contentCart.reduce(function(a, b) {
-  //       return b[prop] == null ? a : a + b[prop];
-  //     }, 0);
-  //   }
+  const totalAmount = contentCart.reduce((prev, next) => prev + next.price, 0);
   return (
-    <Container>
+    <Container className="cart">
       <Card bg="light" style={{ width: "18rem" }}>
-        <Card.Header>Your cart</Card.Header>
+        <Card.Header>
+          <b>Your cart</b>
+        </Card.Header>
         <Card.Body>
-          <Card.Title>Added items</Card.Title>
           <Card.Text>
             {contentCart.map(shoe => (
               <ListGroup variant="flush">
@@ -32,7 +32,17 @@ export default function ShoppingCart({ contentCart }) {
                 </ListGroup.Item>
               </ListGroup>
             ))}
-            {/* {totalOfCart(contentCart)} */}
+            {totalAmount === 0 ? (
+              "You have no items in your cart..."
+            ) : (
+              <Total>
+                {" "}
+                Total amount: {totalAmount}€
+                <Button variant="danger" size="sm">
+                  Checkout
+                </Button>
+              </Total>
+            )}
           </Card.Text>
         </Card.Body>
       </Card>
