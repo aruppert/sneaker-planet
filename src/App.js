@@ -25,7 +25,12 @@ function App() {
               <Header toggleCart={() => setShowCart(!showCart)} />
               <Switch>
                 <Route path="/shop">
-                  {showCart && <ShoppingCart contentCart={contentCart} />}
+                  {showCart && (
+                    <ShoppingCart
+                      contentCart={contentCart}
+                      onCartChange={newCart => setContentCart(newCart)}
+                    />
+                  )}
                   <ShopPage
                     onCartChange={item =>
                       setContentCart(contentCart.concat(item))

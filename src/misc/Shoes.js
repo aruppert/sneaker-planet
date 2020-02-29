@@ -33,7 +33,7 @@ const shoes = [
   },
   {
     id: 4,
-    name: "Jordans BW Homme",
+    name: "Jordans Homme",
     for: "male",
     description: "Jump higher and land softer with Jordans.",
     price: 96,
@@ -81,7 +81,7 @@ const shoes = [
   },
   {
     id: 10,
-    name: "L.Vuitton meets Nike",
+    name: "L.Vuitton Nike",
     for: "male",
     description: "Be aware winners. This shoe shows your success.",
     price: 150,
