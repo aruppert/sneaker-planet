@@ -46,8 +46,19 @@ export default function ProductCard({
   forGender,
   description,
   price,
-  src
+  src,
+  onAddItem
 }) {
+  const [selectedSize, setSelectedSize] = React.useState("");
+
+  function verifyAndAddItem(item) {
+    if (item.selectedSize === "") {
+      alert("Please select shoe size before buying");
+      return null;
+    } else {
+      onAddItem(item);
+    }
+  }
   return (
     <FlippyStyled flipOnHover={true} flipDirection="horizontal">
       <FrontSideStyled>
@@ -89,8 +100,18 @@ export default function ProductCard({
                 >
                   {forGender === "female" || forGender === "unisex" ? (
                     <>
-                      <Dropdown.Item eventKey="34">34</Dropdown.Item>
-                      <Dropdown.Item eventKey="36">36</Dropdown.Item>
+                      <Dropdown.Item
+                        onSelect={eventKey => setSelectedSize(eventKey)}
+                        eventKey="34"
+                      >
+                        34
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        onSelect={eventKey => setSelectedSize(eventKey)}
+                        eventKey="36"
+                      >
+                        36
+                      </Dropdown.Item>
                     </>
                   ) : (
                     <>
@@ -102,14 +123,39 @@ export default function ProductCard({
                       </Dropdown.Item>
                     </>
                   )}
-                  <Dropdown.Item eventKey="38">38</Dropdown.Item>
-                  <Dropdown.Item eventKey="40">40</Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={eventKey => setSelectedSize(eventKey)}
+                    eventKey="38"
+                  >
+                    38
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onSelect={eventKey => setSelectedSize(eventKey)}
+                    eventKey="40"
+                  >
+                    40
+                  </Dropdown.Item>
                   {forGender === "male" || forGender === "unisex" ? (
                     <>
                       {" "}
-                      <Dropdown.Item eventKey="42">42</Dropdown.Item>
-                      <Dropdown.Item eventKey="44">44</Dropdown.Item>
-                      <Dropdown.Item eventKey="46">46</Dropdown.Item>
+                      <Dropdown.Item
+                        onSelect={eventKey => setSelectedSize(eventKey)}
+                        eventKey="42"
+                      >
+                        42
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        onSelect={eventKey => setSelectedSize(eventKey)}
+                        eventKey="44"
+                      >
+                        44
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        onSelect={eventKey => setSelectedSize(eventKey)}
+                        eventKey="46"
+                      >
+                        46
+                      </Dropdown.Item>
                     </>
                   ) : (
                     <>
@@ -126,8 +172,14 @@ export default function ProductCard({
                     </>
                   )}
                 </DropdownButton>
-                <Button variant="success" size="sm">
-                  Buy
+                <Button
+                  variant="success"
+                  size="sm"
+                  onClick={() =>
+                    verifyAndAddItem({ name, price, selectedSize })
+                  }
+                >
+                  Add
                 </Button>
               </CardNav>
             </CardBody>

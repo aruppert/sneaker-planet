@@ -4,7 +4,7 @@ const shoes = [
     name: "Converse Classic",
     for: "unisex",
     description: "The all-time classic in original design.",
-    price: "80",
+    price: 80,
     img: "pictures/sneaker1.webp"
   },
   {
@@ -12,7 +12,7 @@ const shoes = [
     name: "McSport 1st Edition",
     for: "male",
     description: "Loved by many - perfect for Tennis.",
-    price: "93",
+    price: 93,
     img: "pictures/sneaker2.webp"
   },
   {
@@ -20,7 +20,7 @@ const shoes = [
     name: "Squash Supreme",
     for: "female",
     description: "Win every match with this sneaker.",
-    price: "75",
+    price: 75,
     img: "pictures/sneaker3.webp"
   },
   {
@@ -28,15 +28,15 @@ const shoes = [
     name: "Sky Blue Boots",
     for: "female",
     description: "Make even the clear blue sky jealous.",
-    price: "99",
+    price: 99,
     img: "pictures/sneaker4.webp"
   },
   {
     id: 4,
-    name: "Jordans BW Homme",
+    name: "Jordans Homme",
     for: "male",
     description: "Jump higher and land softer with Jordans.",
-    price: "96",
+    price: 96,
     img: "pictures/sneaker5.webp"
   },
   {
@@ -44,7 +44,7 @@ const shoes = [
     name: "Nike High Skate",
     for: "unisex",
     description: "Not only for skating the best shoe around.",
-    price: "88",
+    price: 88,
     img: "pictures/sneaker6.webp"
   },
   {
@@ -52,7 +52,7 @@ const shoes = [
     name: "Nike Eco Rain",
     for: "unisex",
     description: "100% waterproof for every climate zone.",
-    price: "120",
+    price: 120,
     img: "pictures/sneaker7.webp"
   },
   {
@@ -60,7 +60,7 @@ const shoes = [
     name: "Ferrari Italia Sport",
     for: "male",
     description: "Be the fastest in your sport with Ferrari.",
-    price: "125",
+    price: 125,
     img: "pictures/sneaker8.webp"
   },
   {
@@ -68,7 +68,7 @@ const shoes = [
     name: "Purple Marathon .2",
     for: "unisex",
     description: "Fly through any race with our new improved model.",
-    price: "130",
+    price: 130,
     img: "pictures/sneaker9.webp"
   },
   {
@@ -76,15 +76,15 @@ const shoes = [
     name: "adidas Jumping Elle",
     for: "female",
     description: "Great light weight sneaker with long lasting build.",
-    price: "110",
+    price: 110,
     img: "pictures/sneaker11.webp"
   },
   {
     id: 10,
-    name: "L.Vuitton meets Nike",
+    name: "L.Vuitton Nike",
     for: "male",
     description: "Be aware winners. This shoe shows your success.",
-    price: "150",
+    price: 150,
     img: "pictures/sneaker12.webp"
   }
 ];
