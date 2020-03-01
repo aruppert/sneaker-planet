@@ -7,6 +7,7 @@ import "@brainhubeu/react-carousel/lib/style.css";
 
 const ShopContainer = styled.div`
   padding: 70px 0;
+  margin: 15vh 0 0 0;
 `;
 
 const ProductContainer = styled.div`
@@ -16,7 +17,10 @@ const ProductContainer = styled.div`
 `;
 
 const StyledCarousel = styled(Carousel)`
+  position: absolute;
+  top: 90px;
   height: 25vh;
+  width: 100%;
 `;
 
 export default function ShopPage({ onCartChange }) {
