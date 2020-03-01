@@ -3,10 +3,12 @@ import styled from "@emotion/styled";
 import { Card, ListGroup, Button } from "react-bootstrap";
 
 const Container = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 70px 0;
+  position: sticky;
+  display: flex;
+  top: 65px;
+  justify-content: flex-end;
+  left: 0px;
+  /* margin: 70px 0; */
   z-index: 100;
 `;
 

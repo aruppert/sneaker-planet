@@ -11,7 +11,7 @@ import HomePage from "./pages/HomePage";
 import ShoppingCart from "./components/ShoppingCart";
 
 function App() {
-  const [showCart, setShowCart] = React.useState(false);
+  const [showCart, setShowCart] = React.useState(true);
   const [contentCart, setContentCart] = React.useState([]);
 
   return (
