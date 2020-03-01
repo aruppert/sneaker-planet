@@ -39,11 +39,11 @@ function App() {
                     contentCart={contentCart}
                   />
                 </Route>
-                <Route>
-                  <HomePage exact path="/home" />
+                <Route path="/home">
+                  <HomePage />
                 </Route>
-                <Route>
-                  <ContactPage exact path="/contact" />
+                <Route path="/contact">
+                  <ContactPage />
                 </Route>
               </Switch>
               <Footer />
