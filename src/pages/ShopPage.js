@@ -10,17 +10,20 @@ const ShopContainer = styled.div`
   margin: 15vh 0 0 0;
 `;
 
-const ProductContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  margin: auto;
-`;
-
 const StyledCarousel = styled(Carousel)`
   position: absolute;
   top: 90px;
-  height: 25vh;
+  height: 22vh;
   width: 100%;
+`;
+
+const ProductContainer = styled.div`
+  position: absolute;
+  top: 310px;
+  padding: 0 0 80px 0;
+  display: flex;
+  flex-flow: row wrap;
+  margin: auto;
 `;
 
 export default function ShopPage({ onCartChange }) {
