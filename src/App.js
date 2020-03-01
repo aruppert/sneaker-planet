@@ -9,6 +9,7 @@ import ShopPage from "./pages/ShopPage";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ShoppingCart from "./components/ShoppingCart";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const [showCart, setShowCart] = React.useState(false);
@@ -38,8 +39,11 @@ function App() {
                     contentCart={contentCart}
                   />
                 </Route>
-                <Route>
-                  <HomePage path="/home" />
+                <Route path="/home">
+                  <HomePage />
+                </Route>
+                <Route path="/contact">
+                  <ContactPage />
                 </Route>
               </Switch>
               <Footer />

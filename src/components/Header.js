@@ -70,6 +70,7 @@ export default function Header({ toggleCart }) {
           <Nav.Link disabled href="/about">
             About us
           </Nav.Link>
+          <Nav.Link href="/contact">Contact</Nav.Link>
         </Nav>
       </Navbar.Collapse>
       <Button onClick={() => toggleCart()}>
