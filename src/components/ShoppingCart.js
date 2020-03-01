@@ -40,7 +40,7 @@ export default function ShoppingCart({ contentCart, onCartChange }) {
   };
 
   return (
-    <Container className="cart">
+    <Container>
       <Card bg="light" style={{ width: "18rem" }}>
         <CardHeader>Your shopping cart</CardHeader>
         <Card.Body>

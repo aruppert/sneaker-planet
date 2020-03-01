@@ -23,14 +23,14 @@ function App() {
             <Route exact path="/" component={LandingPage} />
             <Route>
               <Header toggleCart={() => setShowCart(!showCart)} />
+              {showCart && (
+                <ShoppingCart
+                  contentCart={contentCart}
+                  onCartChange={newCart => setContentCart(newCart)}
+                />
+              )}
               <Switch>
                 <Route path="/shop">
-                  {showCart && (
-                    <ShoppingCart
-                      contentCart={contentCart}
-                      onCartChange={newCart => setContentCart(newCart)}
-                    />
-                  )}
                   <ShopPage
                     onCartChange={item =>
                       setContentCart(contentCart.concat(item))
