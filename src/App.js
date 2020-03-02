@@ -14,6 +14,7 @@ import ContactPage from "./pages/ContactPage";
 function App() {
   const [showCart, setShowCart] = React.useState(false);
   const [contentCart, setContentCart] = React.useState([]);
+  const [cartAnimation, setCartAnimation] = React.useState(false);
 
   return (
     <>
@@ -23,7 +24,10 @@ function App() {
           <Switch>
             <Route exact path="/" component={LandingPage} />
             <Route>
-              <Header toggleCart={() => setShowCart(!showCart)} />
+              <Header
+                cartAnimation={cartAnimation}
+                toggleCart={() => setShowCart(!showCart)}
+              />
               {showCart && (
                 <ShoppingCart
                   contentCart={contentCart}
@@ -33,6 +37,8 @@ function App() {
               <Switch>
                 <Route path="/shop">
                   <ShopPage
+                    cartAnimation={cartAnimation}
+                    onChangeCartAnimation={bool => setCartAnimation(bool)}
                     onCartChange={item =>
                       setContentCart(contentCart.concat(item))
                     }

@@ -40,10 +40,6 @@ const FrontSideStyled = styled(FrontSide)`
 const BackSideStyled = styled(BackSide)`
   padding: 0;
   box-shadow: none;
-`;
-
-const StyledCardImg = styled(Card.Img)`
-  /* animation: ${zoomOutUpRight} 5s 1; */
   animation: ${props =>
     props.startAnimation
       ? css`
@@ -59,17 +55,19 @@ export default function ProductCard({
   description,
   price,
   src,
-  onAddItem
+  onAddItem,
+  cartAnimation,
+  onChangeCartAnimation
 }) {
   const [selectedSize, setSelectedSize] = React.useState("");
   const [startAnimation, setStartAnimation] = React.useState(false);
-  console.log(startAnimation);
 
   function verifyAndAddItem(item) {
     if (item.selectedSize === "") {
       alert("Please select shoe size before buying");
       return null;
     } else {
+      onChangeCartAnimation(!cartAnimation);
       setStartAnimation(!startAnimation);
       onAddItem(item);
     }
@@ -79,7 +77,7 @@ export default function ProductCard({
       <FrontSideStyled>
         <CardContainer>
           <CardStyled>
-            <StyledCardImg variant="top" src={src} alt={name} />
+            <Card.Img variant="top" src={src} alt={name} />
             <CardBody>
               <CardTitle>{name}</CardTitle>
               <Card.Text style={{ flexGrow: 1 }}>{description}</Card.Text>
@@ -94,18 +92,16 @@ export default function ProductCard({
           </CardStyled>
         </CardContainer>
       </FrontSideStyled>
-      <BackSideStyled>
+      <BackSideStyled
+        startAnimation={startAnimation}
+        onAnimationEnd={() => {
+          setStartAnimation(!startAnimation);
+          onChangeCartAnimation(!cartAnimation);
+        }}
+      >
         <CardContainer>
           <CardStyled>
-            <StyledCardImg
-              startAnimation={startAnimation}
-              onAnimationEnd={() => {
-                setStartAnimation(!startAnimation);
-              }}
-              variant="top"
-              src={src}
-              alt={name}
-            />
+            <Card.Img variant="top" src={src} alt={name} />
             <CardBody>
               <CardTitle>{name}</CardTitle>
               <Card.Text style={{ flexGrow: 1 }}>

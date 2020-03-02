@@ -19,6 +19,20 @@ export const zoomOutUpRight = keyframes`
     animation-name: zoomOutUpRight;
   }`;
 
+export const latePulse = keyframes`
+  50% {
+    transform: scale3d(1, 1, 1);
+  }
+  75% {
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+.latePulse {
+  animation-name: latePulse;
+}`;
+
 export const fadeIn = keyframes`
   from {
     opacity: 0;
