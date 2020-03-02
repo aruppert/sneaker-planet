@@ -2,6 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Card, Button, DropdownButton, Dropdown } from "react-bootstrap";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import { zoomOutUpRight } from "../Animations";
+import { css } from "@emotion/core";
 
 const CardContainer = styled.div`
   margin: 10px;
@@ -40,6 +42,16 @@ const BackSideStyled = styled(BackSide)`
   box-shadow: none;
 `;
 
+const StyledCardImg = styled(Card.Img)`
+  /* animation: ${zoomOutUpRight} 5s 1; */
+  animation: ${props =>
+    props.startAnimation
+      ? css`
+          ${zoomOutUpRight} 1s 1
+        `
+      : null};
+`;
+
 export default function ProductCard({
   id,
   name,
@@ -50,12 +62,15 @@ export default function ProductCard({
   onAddItem
 }) {
   const [selectedSize, setSelectedSize] = React.useState("");
+  const [startAnimation, setStartAnimation] = React.useState(false);
+  console.log(startAnimation);
 
   function verifyAndAddItem(item) {
     if (item.selectedSize === "") {
       alert("Please select shoe size before buying");
       return null;
     } else {
+      setStartAnimation(!startAnimation);
       onAddItem(item);
     }
   }
@@ -64,7 +79,7 @@ export default function ProductCard({
       <FrontSideStyled>
         <CardContainer>
           <CardStyled>
-            <Card.Img variant="top" src={src} alt={name} />
+            <StyledCardImg variant="top" src={src} alt={name} />
             <CardBody>
               <CardTitle>{name}</CardTitle>
               <Card.Text style={{ flexGrow: 1 }}>{description}</Card.Text>
@@ -82,7 +97,15 @@ export default function ProductCard({
       <BackSideStyled>
         <CardContainer>
           <CardStyled>
-            <Card.Img variant="top" src={src} alt={name} />
+            <StyledCardImg
+              startAnimation={startAnimation}
+              onAnimationEnd={() => {
+                setStartAnimation(!startAnimation);
+              }}
+              variant="top"
+              src={src}
+              alt={name}
+            />
             <CardBody>
               <CardTitle>{name}</CardTitle>
               <Card.Text style={{ flexGrow: 1 }}>
@@ -175,9 +198,9 @@ export default function ProductCard({
                 <Button
                   variant="success"
                   size="sm"
-                  onClick={() =>
-                    verifyAndAddItem({ name, price, selectedSize })
-                  }
+                  onClick={() => {
+                    verifyAndAddItem({ name, price, selectedSize });
+                  }}
                 >
                   Add
                 </Button>
