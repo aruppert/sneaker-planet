@@ -2,6 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import Cart from "../icons/Cart";
+import { latePulse } from "../Animations";
+import { css } from "@emotion/core";
 
 const H1 = styled.h1`
   font-size: 1.3rem;
@@ -22,7 +24,16 @@ const Button = styled.button`
   border: none;
 `;
 
-export default function Header({ toggleCart }) {
+const CartWrapper = styled.div`
+  animation: ${({ cartAnimation }) =>
+    cartAnimation
+      ? css`
+          ${latePulse} 1s 1
+        `
+      : null};
+`;
+
+export default function Header({ toggleCart, cartAnimation }) {
   function setFilter(gender) {
     sessionStorage.setItem("genderFilter", gender);
   }
@@ -74,7 +85,9 @@ export default function Header({ toggleCart }) {
         </Nav>
       </Navbar.Collapse>
       <Button onClick={() => toggleCart()}>
-        <Cart />
+        <CartWrapper cartAnimation={cartAnimation}>
+          <Cart />
+        </CartWrapper>
       </Button>
     </Navbar>
   );

@@ -2,6 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Card, Button, DropdownButton, Dropdown } from "react-bootstrap";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
+import { zoomOutUpRight } from "../Animations";
+import { css } from "@emotion/core";
 
 const CardContainer = styled.div`
   margin: 10px;
@@ -38,6 +40,12 @@ const FrontSideStyled = styled(FrontSide)`
 const BackSideStyled = styled(BackSide)`
   padding: 0;
   box-shadow: none;
+  animation: ${props =>
+    props.startAnimation
+      ? css`
+          ${zoomOutUpRight} 1s 1
+        `
+      : null};
 `;
 
 export default function ProductCard({
@@ -47,15 +55,20 @@ export default function ProductCard({
   description,
   price,
   src,
-  onAddItem
+  onAddItem,
+  cartAnimation,
+  onChangeCartAnimation
 }) {
   const [selectedSize, setSelectedSize] = React.useState("");
+  const [startAnimation, setStartAnimation] = React.useState(false);
 
   function verifyAndAddItem(item) {
     if (item.selectedSize === "") {
       alert("Please select shoe size before buying");
       return null;
     } else {
+      onChangeCartAnimation(!cartAnimation);
+      setStartAnimation(!startAnimation);
       onAddItem(item);
     }
   }
@@ -79,7 +92,13 @@ export default function ProductCard({
           </CardStyled>
         </CardContainer>
       </FrontSideStyled>
-      <BackSideStyled>
+      <BackSideStyled
+        startAnimation={startAnimation}
+        onAnimationEnd={() => {
+          setStartAnimation(!startAnimation);
+          onChangeCartAnimation(!cartAnimation);
+        }}
+      >
         <CardContainer>
           <CardStyled>
             <Card.Img variant="top" src={src} alt={name} />
@@ -175,9 +194,9 @@ export default function ProductCard({
                 <Button
                   variant="success"
                   size="sm"
-                  onClick={() =>
-                    verifyAndAddItem({ name, price, selectedSize })
-                  }
+                  onClick={() => {
+                    verifyAndAddItem({ name, price, selectedSize });
+                  }}
                 >
                   Add
                 </Button>
