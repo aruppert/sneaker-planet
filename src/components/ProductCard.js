@@ -48,6 +48,10 @@ const BackSideStyled = styled(BackSide)`
       : null};
 `;
 
+const QuantityInput = styled.input`
+  width: 30px;
+`;
+
 export default function ProductCard({
   id,
   name,
@@ -55,23 +59,56 @@ export default function ProductCard({
   description,
   price,
   src,
+  contentCart,
   onAddItem,
   cartAnimation,
   onChangeCartAnimation
 }) {
   const [selectedSize, setSelectedSize] = React.useState("");
+  const [quantity, setQuantity] = React.useState(1);
   const [startAnimation, setStartAnimation] = React.useState(false);
 
   function verifyAndAddItem(item) {
-    if (item.selectedSize === "") {
-      alert("Please select shoe size before buying");
-      return null;
+    // if (item.selectedSize === "") {
+    //   alert("Please select shoe size before buying");
+    //   return null;
+    // } else {
+    onChangeCartAnimation(!cartAnimation);
+    setStartAnimation(!startAnimation);
+    console.log(contentCart);
+
+    const checkForSameShoesInCart = contentCart.find(
+      x => x.id === item.id && x.selectedSize === item.selectedSize
+    );
+
+    if (checkForSameShoesInCart) {
+      const sameShoesIncreasedQuantity = {
+        ...item,
+        quantity: item.quantity + checkForSameShoesInCart.quantity
+      };
+      const newCart = contentCart;
+
+      const index = newCart.indexOf(checkForSameShoesInCart);
+      console.log(index);
+      if (index !== -1) {
+        newCart.splice(index, 1);
+        onAddItem([...newCart]);
+      }
+      //   const updatedCart = contentCart.splice(
+      //     index,
+      //     1,
+      //     sameShoesIncreasedQuantity
+      //   );
+
+      // console.log(sameShoesIncreasedQuantity);
+
+      // onAddItem((contentCart[indexOldEntry] = sameShoesIncreasedQuantity));
     } else {
-      onChangeCartAnimation(!cartAnimation);
-      setStartAnimation(!startAnimation);
+      console.log("Nope, it's new");
       onAddItem(item);
     }
   }
+
   return (
     <FlippyStyled flipOnHover={true} flipDirection="horizontal">
       <FrontSideStyled>
@@ -191,11 +228,26 @@ export default function ProductCard({
                     </>
                   )}
                 </DropdownButton>
+                <QuantityInput
+                  name="quantity"
+                  type="number"
+                  min="1"
+                  max="9"
+                  value={quantity}
+                  onChange={e => setQuantity(e.target.value)}
+                  required
+                />
                 <Button
                   variant="success"
                   size="sm"
                   onClick={() => {
-                    verifyAndAddItem({ name, price, selectedSize });
+                    verifyAndAddItem({
+                      id,
+                      name,
+                      price,
+                      selectedSize,
+                      quantity
+                    });
                   }}
                 >
                   Add

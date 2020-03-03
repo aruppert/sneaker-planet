@@ -48,7 +48,8 @@ export default function ShoppingCart({ contentCart, onCartChange }) {
             {contentCart.map((shoe, index) => (
               <ListGroup key={index} variant="flush">
                 <ListGroupItem>
-                  {shoe.name} Size: {shoe.selectedSize} Price: {shoe.price}€
+                  {shoe.name} Size: {shoe.selectedSize} Price: {shoe.price}€{" "}
+                  {shoe.quantity}
                   <Button
                     onClick={e => deleteItem(index)}
                     variant="danger"
