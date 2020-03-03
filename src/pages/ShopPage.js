@@ -27,6 +27,7 @@ const ProductContainer = styled.div`
 `;
 
 export default function ShopPage({
+  contentCart,
   onCartChange,
   cartAnimation,
   onChangeCartAnimation
@@ -70,6 +71,7 @@ export default function ShopPage({
         {filteredShoes.map(shoe => (
           <ProductCard
             key={shoe.id}
+            id={shoe.id}
             name={shoe.name}
             forGender={shoe.for}
             description={shoe.description}
@@ -78,6 +80,7 @@ export default function ShopPage({
             onAddItem={item => addItem(item)}
             cartAnimation={cartAnimation}
             onChangeCartAnimation={onChangeCartAnimation}
+            contentCart={contentCart}
           />
         ))}
       </ProductContainer>
