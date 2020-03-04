@@ -10,11 +10,13 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ShoppingCart from "./components/ShoppingCart";
 import ContactPage from "./pages/ContactPage";
+import EmptyingWarning from "./components/EmptyingWarning";
 
 function App() {
   const [showCart, setShowCart] = React.useState(false);
   const [contentCart, setContentCart] = React.useState([]);
   const [cartAnimation, setCartAnimation] = React.useState(false);
+  const [showEmptyingWarning, setShowEmptyingWarning] = React.useState(false);
 
   return (
     <>
@@ -31,7 +33,20 @@ function App() {
               {showCart && (
                 <ShoppingCart
                   contentCart={contentCart}
-                  onCartChange={newCart => setContentCart(newCart)}
+                  onChangeCart={newCart => setContentCart(newCart)}
+                  onChangeEmptyingWarning={() =>
+                    setShowEmptyingWarning(!showEmptyingWarning)
+                  }
+                />
+              )}
+              {showEmptyingWarning && (
+                <EmptyingWarning
+                  contentCart={contentCart}
+                  onChangeEmptyingWarning={() =>
+                    setShowEmptyingWarning(!showEmptyingWarning)
+                  }
+                  onChangeCart={emptyCart => setContentCart(emptyCart)}
+                  toggleCart={() => setShowCart(!showCart)}
                 />
               )}
               <Switch>
@@ -39,7 +54,7 @@ function App() {
                   <ShopPage
                     cartAnimation={cartAnimation}
                     onChangeCartAnimation={bool => setCartAnimation(bool)}
-                    onCartChange={item =>
+                    onChangeCart={item =>
                       setContentCart(contentCart.concat(item))
                     }
                     contentCart={contentCart}
