@@ -27,7 +27,7 @@ const ProductContainer = styled.div`
 `;
 
 export default function ShopPage({
-  onCartChange,
+  onChangeCart,
   cartAnimation,
   onChangeCartAnimation
 }) {
@@ -43,7 +43,7 @@ export default function ShopPage({
   });
 
   function addItem(item) {
-    onCartChange(item);
+    onChangeCart(item);
   }
 
   return (

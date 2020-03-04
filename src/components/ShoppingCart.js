@@ -8,7 +8,6 @@ const Container = styled.div`
   top: 65px;
   justify-content: flex-end;
   left: 0px;
-  /* margin: 70px 0; */
   z-index: 100;
 `;
 
@@ -29,14 +28,19 @@ const ListGroupItem = styled(ListGroup.Item)`
   padding: 12px 0;
 `;
 
-export default function ShoppingCart({ contentCart, onCartChange }) {
-  const totalAmount = contentCart.reduce((prev, next) => prev + next.price, 0);
+export default function ShoppingCart({
+  contentCart,
+  onChangeCart,
+  onChangeEmptyingWarning
+}) {
+  let totalAmount =
+    contentCart.reduce((prev, next) => prev + next.price, 0) || 0;
 
   const deleteItem = index => {
     const newContentCart = contentCart.filter(
       (item, itemIndex) => index !== itemIndex
     );
-    return onCartChange([...newContentCart]);
+    return onChangeCart([...newContentCart]);
   };
 
   return (
@@ -65,6 +69,13 @@ export default function ShoppingCart({ contentCart, onCartChange }) {
               <Total>
                 {" "}
                 Total: {totalAmount}€
+                <Button
+                  variant="danger"
+                  size="sm"
+                  onClick={() => onChangeEmptyingWarning(false)}
+                >
+                  Empty it
+                </Button>
                 <Button
                   variant="success"
                   size="sm"
