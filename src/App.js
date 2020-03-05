@@ -11,6 +11,7 @@ import HomePage from "./pages/HomePage";
 import ShoppingCart from "./components/ShoppingCart";
 import ContactPage from "./pages/ContactPage";
 import EmptyingWarning from "./components/EmptyingWarning";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
   const [showCart, setShowCart] = React.useState(false);
@@ -65,6 +66,9 @@ function App() {
                 </Route>
                 <Route path="/contact">
                   <ContactPage />
+                </Route>
+                <Route path="/order">
+                  <OrderPage />
                 </Route>
               </Switch>
               <Footer />
